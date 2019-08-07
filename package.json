@@ -24,6 +24,7 @@
     "expo-web-browser": "6.0.0",
     "express": "^4.17.1",
     "firebase": "^6.3.4",
+    "firebaseui": "^4.1.0",
     "lodash": "^4.17.15",
     "react": "16.8.3",
     "react-dom": "^16.8.6",
