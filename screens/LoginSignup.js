@@ -3,15 +3,8 @@ import { ScrollView, TextInput, Button, View } from 'react-native';
 import styles from './styles';
 
 import { MonoText } from '../components/StyledText';
-// import console = require('console');
-// import console = require('console');
 
 export default class LoginSignup extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { email: 'Email', password: 'Password' };
-  }
-
   render() {
     return (
       <View style={styles.container}>
@@ -27,22 +20,25 @@ export default class LoginSignup extends React.Component {
                 borderWidth: 1,
                 width: '50%',
               }}
-              onChangeText={email => this.setState({ email })}
+              onChangeText={email => this.props.handleChange(email, 'email')}
               placeholder="Enter email here"
-              value={this.state.email}
             />
             <TextInput
               style={{
-                height: 40,
+                height: 20,
                 borderColor: 'gray',
                 borderWidth: 1,
                 width: '50%',
               }}
-              onChangeText={password => this.setState({ password })}
+              onChangeText={password =>
+                this.props.handleChange(password, 'password')
+              }
               placeholder="Enter password here"
-              value={this.state.password}
             />
-            <Button title={this.props.button} />
+            <Button
+              title={this.props.button}
+              onPress={this.props.handleSubmit}
+            />
             <Button
               title="Back to Home"
               onPress={() => this.props.navigation.navigate('Main')}

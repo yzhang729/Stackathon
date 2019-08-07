@@ -3,6 +3,8 @@ import LoginSignup from './LoginSignup';
 import { connect } from 'react-redux';
 import { createUser } from '../store/userStore';
 // import console = require('console');
+// import console = require('console');
+import { db } from '../config/firebase';
 
 class Signup extends React.Component {
   constructor() {
@@ -15,18 +17,32 @@ class Signup extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    this.props.createUser(this.state);
-    // this.props.history.push('/my-fridge');
+  handleSubmit() {
+    db.collection('users')
+      .add({
+        email: this.state.email,
+        password: this.state.password,
+      })
+      .then(function(docRef) {
+        console.log('document written with ID:', docRef.id);
+      });
   }
 
-  handleChange() {
-    console.log(this.state);
+  handleChange(value, stateName) {
+    this.setState({
+      [stateName]: value,
+    });
   }
 
   render() {
-    return <LoginSignup button="Sign Up" navigation={this.props.navigation} />;
+    return (
+      <LoginSignup
+        button="Sign Up"
+        navigation={this.props.navigation}
+        handleChange={this.handleChange}
+        handleSubmit={this.handleSubmit}
+      />
+    );
   }
 }
 
