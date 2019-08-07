@@ -11,8 +11,8 @@ var config = {
   appId: '1:766362258628:web:5cc6ab2c8120f029',
 };
 
-firebase.initializeApp(config);
+let app = firebase.initializeApp(config);
 
 const db = firebase.firestore();
 
-module.exports = { db };
+module.exports = { db, app, config };

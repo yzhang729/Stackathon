@@ -3,8 +3,8 @@ import LoginSignup from './LoginSignup';
 import { connect } from 'react-redux';
 import { createUser } from '../store/userStore';
 
-import { db } from '../config/firebase';
 import firebase from 'firebase';
+import { app } from '../config/firebase';
 
 class Signup extends React.Component {
   constructor() {
@@ -18,22 +18,12 @@ class Signup extends React.Component {
   }
 
   handleSubmit() {
-    // db.collection('users')
-    //   .add({
-    //     email: this.state.email,
-    //     password: this.state.password,
-    //   })
-    //   .then(function(docRef) {
-    //     console.log('docref', docRef);
-    //   });
     firebase
       .auth()
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
       .catch(function(error) {
-        // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
-        // ...
         console.log(errorCode, errorMessage);
       });
   }
@@ -46,12 +36,14 @@ class Signup extends React.Component {
 
   render() {
     return (
-      <LoginSignup
-        button="Sign Up"
-        navigation={this.props.navigation}
-        handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}
-      />
+      <React.Fragment>
+        <LoginSignup
+          button="Sign Up"
+          navigation={this.props.navigation}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+        />
+      </React.Fragment>
     );
   }
 }

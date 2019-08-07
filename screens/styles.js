@@ -15,6 +15,12 @@ const styles = StyleSheet.create({
   contentContainer: {
     paddingTop: 30,
   },
+  passwordEntry: {
+    height: 20,
+    borderColor: 'gray',
+    borderWidth: 1,
+    width: '50%',
+  },
   welcomeContainer: {
     alignItems: 'center',
     marginTop: 10,
@@ -90,6 +96,16 @@ const styles = StyleSheet.create({
   helpLinkText: {
     fontSize: 14,
     color: '#2e78b7',
+  },
+  fridgeContainer: {
+    position: 'absolute',
+    paddingTop: '50%',
+    alignSelf: 'center',
+  },
+  fridgeAddItem: {
+    height: 20,
+    borderColor: 'gray',
+    borderWidth: 1,
   },
 });
 

@@ -60,6 +60,7 @@ export default function HomeScreen(props) {
             title="Log In"
             onPress={() => navigate('Login', { button: 'Log In' })}
           />
+          <Button title="Fridge" onPress={() => navigate('Fridge')} />
         </View>
       </ScrollView>
 

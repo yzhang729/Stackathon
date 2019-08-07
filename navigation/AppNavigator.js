@@ -6,6 +6,7 @@ import MainTabNavigator from './MainTabNavigator';
 import Login from '../screens/Login';
 import Signup from '../screens/Signup';
 import store from '../store/userStore';
+import Fridge from '../screens/Fridge';
 
 let Navigation = createAppContainer(
   createSwitchNavigator({
@@ -14,6 +15,7 @@ let Navigation = createAppContainer(
     Main: MainTabNavigator,
     Login: Login,
     Signup: Signup,
+    Fridge: Fridge,
   })
 );
 

@@ -3,6 +3,7 @@ import { createSwitchNavigator } from 'react-navigation';
 
 import MainTabNavigator from './MainTabNavigator';
 import LoginSignup from '../screens/LoginSignup';
+import Fridge from '../screens/Fridge';
 
 const switchNavigator = createSwitchNavigator({
   // You could add another route here for authentication.
@@ -10,6 +11,7 @@ const switchNavigator = createSwitchNavigator({
   Main: MainTabNavigator,
   Login: LoginSignup,
   Signup: LoginSignup,
+  Fridge: Fridge,
 });
 switchNavigator.path = '';
 

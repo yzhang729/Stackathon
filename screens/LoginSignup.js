@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, TextInput, Button, View } from 'react-native';
+import { ScrollView, TextInput, Button, View, Text } from 'react-native';
 import styles from './styles';
 
 import { MonoText } from '../components/StyledText';
@@ -14,22 +14,14 @@ export default class LoginSignup extends React.Component {
         >
           <View style={styles.loginContainer}>
             <TextInput
-              style={{
-                height: 20,
-                borderColor: 'gray',
-                borderWidth: 1,
-                width: '50%',
-              }}
+              style={styles.passwordEntry}
+              autoCapitalize="none"
               onChangeText={email => this.props.handleChange(email, 'email')}
               placeholder="Enter email here"
             />
             <TextInput
-              style={{
-                height: 20,
-                borderColor: 'gray',
-                borderWidth: 1,
-                width: '50%',
-              }}
+              style={styles.passwordEntry}
+              autoCapitalize="none"
               onChangeText={password =>
                 this.props.handleChange(password, 'password')
               }
@@ -43,6 +35,7 @@ export default class LoginSignup extends React.Component {
               title="Back to Home"
               onPress={() => this.props.navigation.navigate('Main')}
             />
+            <Text>{this.props.userEmail}</Text>
           </View>
         </ScrollView>
       </View>
