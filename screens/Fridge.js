@@ -6,7 +6,7 @@ import styles from './styles';
 
 import FrigeList from './FridgeList';
 
-import { app } from '../config/firebase';
+import { app, db } from '../config/firebase';
 import FridgeList from './FridgeList';
 
 class Fridge extends React.Component {
@@ -18,6 +18,25 @@ class Fridge extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    var user = firebase.auth().currentUser;
+    if (!user) {
+      this.setState({
+        fridge: [],
+      });
+    } else {
+      db.collection('users')
+        .get()
+        .then(function(doc) {
+          if (doc.exists) {
+            console.log('document data obtained');
+          } else {
+            console.log('document does not exist', doc);
+          }
+        });
+    }
   }
 
   handleChange(item) {

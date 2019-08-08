@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { createUser } from '../store/userStore';
 
 import firebase from 'firebase';
-import { app } from '../config/firebase';
+import { app, db } from '../config/firebase';
 
 class Signup extends React.Component {
   constructor() {
@@ -25,7 +25,23 @@ class Signup extends React.Component {
         var errorCode = error.code;
         var errorMessage = error.message;
         console.log(errorCode, errorMessage);
-      });
+      })
+      .then(
+        // firebase
+        //   .database()
+        //   .ref('users')
+        //   .set({
+        //     email: this.state.email,
+        //     fridge: ['apple', 'orange', 'plums'],
+        //   })
+        db
+          .collection('users')
+          .doc(this.state.email)
+          .set({
+            email: this.state.email,
+            fridge: ['apple', 'plum', 'pear'],
+          })
+      );
   }
 
   handleChange(value, stateName) {
