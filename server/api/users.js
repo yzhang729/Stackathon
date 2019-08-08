@@ -48,7 +48,6 @@ router.get('/me', (req, res, next) => {
   if (req.user) {
     res.json(req.user);
   } else if (!req.session.userId) {
-    console.log(req.session);
     userNotFound(next);
   } else {
     Users.findByPk(req.session.userId, { include: [{ model: Fridge }] })

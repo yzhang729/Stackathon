@@ -61,7 +61,7 @@ export default class CameraExample extends React.Component {
 
     // Resume the preview
     // this.camera.resumePreview();
-    this.props.navigation.navigate('Fridge');
+    this.props.navigation.navigate('NewItems', { answers: this.state.answers });
   }
 
   identifyImage(imageData) {
@@ -81,7 +81,6 @@ export default class CameraExample extends React.Component {
           output => output.name
         );
         this.displayAnswer(answers);
-        console.log(answers);
       })
       .catch(err => alert(err));
   }

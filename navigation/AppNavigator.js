@@ -9,6 +9,7 @@ import store from '../store/userStore';
 import Fridge from '../screens/Fridge';
 import Camera from '../screens/Camera';
 import ExpoCam from '../screens/ExpoCam';
+import NewItems from '../screens/NewItems';
 
 let Navigation = createAppContainer(
   createSwitchNavigator({
@@ -20,6 +21,7 @@ let Navigation = createAppContainer(
     Fridge: Fridge,
     Camera: Camera,
     ExpoCam: ExpoCam,
+    NewItems: NewItems,
   })
 );
 
