@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Button, TextInput } from 'react-native';
+import { Text, TextInput, View } from 'react-native';
 import styles from './styles';
 
 import { app } from '../config/firebase';
@@ -9,11 +9,19 @@ const FridgeList = props => {
   return (
     <React.Fragment>
       {props.fridge.map(item => (
-        <Text key={item}>{item}</Text>
+        <View style={styles.fridgeListView} key={item}>
+          <Text style={styles.fridgeItem}>{item}</Text>
+          <TouchableOpacity
+            style={styles.deleteItemBtn}
+            onPress={() => props.handleDelete(item)}
+          >
+            <Text style={styles.defaultBtnText}>Delete</Text>
+          </TouchableOpacity>
+        </View>
       ))}
       <TextInput
         placeholder="add new item"
-        style={styles.fridgeAddItem}
+        style={styles.defaultTextEntry}
         onChangeText={item => props.handleChange(item)}
         autoCapitalize="none"
       />
@@ -23,6 +31,13 @@ const FridgeList = props => {
         style={styles.defaultBtn}
       >
         <Text style={styles.defaultBtnText}>Add Item</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        title="Camera"
+        style={styles.defaultBtn}
+        onPress={() => props.navigate('ExpoCam')}
+      >
+        <Text style={styles.defaultBtnText}>Camera</Text>
       </TouchableOpacity>
     </React.Fragment>
   );

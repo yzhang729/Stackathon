@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   },
   welcomeContainer: {
     alignItems: 'center',
-    marginTop: '50%',
+    marginTop: '30%',
     marginBottom: 20,
   },
   loginContainer: {
@@ -152,6 +152,29 @@ const styles = StyleSheet.create({
     color: '#424b54',
     lineHeight: 36,
     textAlign: 'center',
+  },
+  fridgeListView: {
+    flex: 1,
+    flexDirection: 'row',
+    borderColor: '#424b54',
+    borderWidth: 1,
+    borderRadius: 5,
+    width: '100%',
+    marginTop: 10,
+    height: 50,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginLeft: 5,
+    marginRight: 5,
+  },
+  deleteItemBtn: {
+    backgroundColor: '#c5baaf',
+    height: '100%',
+    flex: 1,
+    alignItems: 'center',
+  },
+  fridgeItem: {
+    marginLeft: 10,
   },
 });
 

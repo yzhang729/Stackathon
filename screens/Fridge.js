@@ -1,10 +1,8 @@
 import React from 'react';
 import firebase from 'firebase';
-import { Text, View, ScrollView, Button, TextInput } from 'react-native';
+import { Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import { config } from '../config/firebase';
 import styles from './styles';
-
-import FrigeList from './FridgeList';
 
 import { app, db } from '../config/firebase';
 import FridgeList from './FridgeList';
@@ -18,6 +16,7 @@ class Fridge extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   async componentDidMount() {
@@ -65,6 +64,26 @@ class Fridge extends React.Component {
         );
     }
   }
+
+  async handleDelete(item) {
+    let newFridge = this.state.fridge.filter(fridge => fridge !== item);
+    this.setState({
+      fridge: newFridge,
+    });
+    var user = firebase.auth().currentUser;
+    if (user) {
+      await db
+        .collection('users')
+        .doc(user.email)
+        .set(
+          {
+            fridge: newFridge,
+          },
+          { merge: true }
+        );
+    }
+  }
+
   render() {
     var user = firebase.auth().currentUser;
     let renderPage;
@@ -78,14 +97,12 @@ class Fridge extends React.Component {
       renderPage = (
         <React.Fragment>
           <View style={styles.loginContainer}>
-            <Text>
-              Welcome back {user.email}
-              {'\n'}My Fridge:{'\n'}
-            </Text>
+            <Text>Welcome back {user.email}</Text>
             <FridgeList
               fridge={this.state.fridge}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
+              handleDelete={this.handleDelete}
             />
           </View>
         </React.Fragment>
@@ -93,21 +110,21 @@ class Fridge extends React.Component {
     }
     return (
       <View style={styles.container}>
-        <ScrollView
-          style={styles.container}
-          contentContainerStyle={styles.contentContainer}
-        >
-          <View style={styles.fridgeContainer}>
-            {renderPage}
-            <Button
-              onPress={() => this.props.navigation.navigate('Main')}
-              title="Go back from this Page"
-            />
-          </View>
-        </ScrollView>
+        <ScrollView>{renderPage}</ScrollView>
       </View>
     );
   }
 }
+
+Fridge.navigationOptions = {
+  title: 'My Fridge',
+  headerStyle: {
+    backgroundColor: '#b38d97',
+  },
+  headerTintColor: '#fff',
+  headerTitleStyle: {
+    fontWeight: 'bold',
+  },
+};
 
 export default Fridge;
