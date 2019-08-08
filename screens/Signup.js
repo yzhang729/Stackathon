@@ -32,7 +32,7 @@ class Signup extends React.Component {
           .doc(this.state.email)
           .set({
             email: this.state.email,
-            fridge: ['apple', 'plum', 'pear'],
+            fridge: [],
           })
       )
       .then(() => this.props.navigation.navigate('Fridge'));
