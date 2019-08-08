@@ -6,6 +6,7 @@ import { app } from '../config/firebase';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const FridgeList = props => {
+  console.log(props);
   return (
     <React.Fragment>
       {props.fridge.map(item => (
@@ -15,7 +16,7 @@ const FridgeList = props => {
             style={styles.deleteItemBtn}
             onPress={() => props.handleDelete(item)}
           >
-            <Text style={styles.defaultBtnText}>Delete</Text>
+            <Text style={styles.deleteItemTxt}>Delete</Text>
           </TouchableOpacity>
         </View>
       ))}
@@ -35,7 +36,7 @@ const FridgeList = props => {
       <TouchableOpacity
         title="Camera"
         style={styles.defaultBtn}
-        onPress={() => props.navigate('ExpoCam')}
+        onPress={() => props.navigation.navigate('ExpoCam')}
       >
         <Text style={styles.defaultBtnText}>Camera</Text>
       </TouchableOpacity>

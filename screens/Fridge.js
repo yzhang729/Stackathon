@@ -97,12 +97,14 @@ class Fridge extends React.Component {
       renderPage = (
         <React.Fragment>
           <View style={styles.loginContainer}>
-            <Text>Welcome back {user.email}</Text>
+            <Text style={styles.welcomeText}>Welcome back, {user.email}</Text>
+            <Text style={styles.secondaryText}>Your current fridge:</Text>
             <FridgeList
               fridge={this.state.fridge}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
               handleDelete={this.handleDelete}
+              navigation={this.props.navigation}
             />
           </View>
         </React.Fragment>
