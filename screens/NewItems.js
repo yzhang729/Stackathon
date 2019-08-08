@@ -1,6 +1,7 @@
 import React from 'react';
-import { Text, Button, View, ScrollView } from 'react-native';
+import { Text, Button, View, ScrollView, TouchableOpacity } from 'react-native';
 import styles from './styles';
+import TagSelector from 'react-native-tag-selector';
 
 import { app } from '../config/firebase';
 
@@ -13,32 +14,32 @@ class NewItems extends React.Component {
     this.clickHandler = this.clickHandler.bind(this);
   }
 
-  clickHandler(event) {
-    console.log(event.id);
+  clickHandler(selection) {
+    this.setState({
+      selections: selection,
+    });
+    console.log(this.state);
   }
 
   render() {
-    const answers = this.props.navigation.getParam('answers');
+    let answers = this.props.navigation.getParam('answers');
+    if (!answers) {
+      answers = [];
+    }
+    const data = answers.map(answer => {
+      return { id: answer, name: answer };
+    });
     return (
       <View style={styles.container}>
-        <ScrollView
-          style={styles.container}
-          contentContainerStyle={styles.contentContainer}
-        >
-          <View style={styles.fridgeContainer}>
-            <Text>Possibilities: </Text>
-            {answers ? (
-              answers.map(answer => (
-                <Button
-                  key={answer}
-                  title={answer}
-                  onPress={this.clickHandler}
-                  id={answer}
-                />
-              ))
-            ) : (
-              <Text />
-            )}
+        <ScrollView>
+          <View style={styles.loginContainer}>
+            <Text>Here's what we got from that image: </Text>
+            <View style={styles.possibilitiesContainer}>
+              <TagSelector
+                tags={data}
+                onChange={selected => this.clickHandler(selected)}
+              />
+            </View>
             <Button
               title="Back to Fridge"
               onPress={() => this.props.navigation.navigate('Fridge')}

@@ -190,6 +190,17 @@ const styles = StyleSheet.create({
     lineHeight: 36,
     textAlign: 'center',
   },
+  possibilitiesContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
+  },
+  possibilitiesBtn: {
+    backgroundColor: '#b38d97',
+    width: '20%',
+    height: 40,
+  },
 });
 
 export default styles;
