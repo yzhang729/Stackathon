@@ -6,7 +6,6 @@ import { app } from '../config/firebase';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const FridgeList = props => {
-  console.log(props);
   return (
     <React.Fragment>
       {props.fridge.map(item => (
