@@ -7,7 +7,16 @@ import { app } from '../config/firebase';
 class NewItems extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      selections: [],
+    };
+    this.clickHandler = this.clickHandler.bind(this);
   }
+
+  clickHandler(event) {
+    console.log(event.id);
+  }
+
   render() {
     const answers = this.props.navigation.getParam('answers');
     return (
@@ -19,7 +28,14 @@ class NewItems extends React.Component {
           <View style={styles.fridgeContainer}>
             <Text>Possibilities: </Text>
             {answers ? (
-              answers.map(answer => <Text key={answer}>{answer}</Text>)
+              answers.map(answer => (
+                <Button
+                  key={answer}
+                  title={answer}
+                  onPress={this.clickHandler}
+                  id={answer}
+                />
+              ))
             ) : (
               <Text />
             )}

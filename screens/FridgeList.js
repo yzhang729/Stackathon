@@ -3,6 +3,7 @@ import { Text, Button, TextInput } from 'react-native';
 import styles from './styles';
 
 import { app } from '../config/firebase';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const FridgeList = props => {
   return (
@@ -14,8 +15,15 @@ const FridgeList = props => {
         placeholder="add new item"
         style={styles.fridgeAddItem}
         onChangeText={item => props.handleChange(item)}
+        autoCapitalize="none"
       />
-      <Button title="Add Item" onPress={props.handleSubmit} />
+      <TouchableOpacity
+        title="Add Item"
+        onPress={props.handleSubmit}
+        style={styles.defaultBtn}
+      >
+        <Text style={styles.defaultBtnText}>Add Item</Text>
+      </TouchableOpacity>
     </React.Fragment>
   );
 };

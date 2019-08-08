@@ -46,14 +46,12 @@ class Signup extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
-        <LoginSignup
-          button="Sign Up"
-          navigation={this.props.navigation}
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-        />
-      </React.Fragment>
+      <LoginSignup
+        button="Sign Up"
+        navigation={this.props.navigation}
+        handleChange={this.handleChange}
+        handleSubmit={this.handleSubmit}
+      />
     );
   }
 }

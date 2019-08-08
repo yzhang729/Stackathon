@@ -14,21 +14,26 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     paddingTop: 30,
+    width: '100%',
   },
-  passwordEntry: {
-    height: 20,
+  defaultTextEntry: {
+    height: 40,
     borderColor: 'gray',
     borderWidth: 1,
-    width: '50%',
+    width: '70%',
+    borderRadius: 5,
+    marginTop: 10,
+    paddingLeft: 5,
   },
   welcomeContainer: {
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: '50%',
     marginBottom: 20,
   },
   loginContainer: {
     alignItems: 'center',
-    marginTop: 50,
+    marginTop: '50%',
+    width: '100%',
   },
   welcomeImage: {
     width: 100,
@@ -106,6 +111,47 @@ const styles = StyleSheet.create({
     height: 20,
     borderColor: 'gray',
     borderWidth: 1,
+  },
+  defaultBtn: {
+    marginRight: 40,
+    marginLeft: 40,
+    marginTop: 10,
+    paddingTop: 10,
+    paddingBottom: 10,
+    backgroundColor: '#b38d97',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#fff',
+    width: 200,
+  },
+  defaultBtnText: {
+    color: '#fff',
+    textAlign: 'center',
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+  newItemContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  newItemBtn: {
+    backgroundColor: '#b38d97',
+    borderRadius: 5,
+    width: '20%',
+    height: 20,
+  },
+  newItemBtnText: {
+    color: '#fff',
+    textAlign: 'center',
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+  welcomeText: {
+    fontSize: 24,
+    color: '#424b54',
+    lineHeight: 36,
+    textAlign: 'center',
   },
 });
 
