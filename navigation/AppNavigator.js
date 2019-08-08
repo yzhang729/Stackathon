@@ -7,6 +7,8 @@ import Login from '../screens/Login';
 import Signup from '../screens/Signup';
 import store from '../store/userStore';
 import Fridge from '../screens/Fridge';
+import Camera from '../screens/Camera';
+import ExpoCam from '../screens/ExpoCam';
 
 let Navigation = createAppContainer(
   createSwitchNavigator({
@@ -16,6 +18,8 @@ let Navigation = createAppContainer(
     Login: Login,
     Signup: Signup,
     Fridge: Fridge,
+    Camera: Camera,
+    ExpoCam: ExpoCam,
   })
 );
 

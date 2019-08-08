@@ -61,6 +61,7 @@ export default function HomeScreen(props) {
             onPress={() => navigate('Login', { button: 'Log In' })}
           />
           <Button title="Fridge" onPress={() => navigate('Fridge')} />
+          <Button title="Camera" onPress={() => navigate('ExpoCam')} />
         </View>
       </ScrollView>
 
