@@ -27,13 +27,6 @@ class Signup extends React.Component {
         console.log(errorCode, errorMessage);
       })
       .then(
-        // firebase
-        //   .database()
-        //   .ref('users')
-        //   .set({
-        //     email: this.state.email,
-        //     fridge: ['apple', 'orange', 'plums'],
-        //   })
         db
           .collection('users')
           .doc(this.state.email)
@@ -41,7 +34,8 @@ class Signup extends React.Component {
             email: this.state.email,
             fridge: ['apple', 'plum', 'pear'],
           })
-      );
+      )
+      .then(() => this.props.navigation.navigate('Fridge'));
   }
 
   handleChange(value, stateName) {

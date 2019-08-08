@@ -13,30 +13,31 @@ class Fridge extends React.Component {
   constructor() {
     super();
     this.state = {
-      fridge: ['apples', 'pears', 'plums'],
+      fridge: [],
       newItem: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     var user = firebase.auth().currentUser;
-    if (!user) {
-      this.setState({
-        fridge: [],
-      });
-    } else {
-      db.collection('users')
+    let userFridge = [];
+    if (user) {
+      await db
+        .collection('users')
+        .doc(user.email)
         .get()
         .then(function(doc) {
           if (doc.exists) {
             console.log('document data obtained');
+            userFridge = doc.data().fridge;
           } else {
-            console.log('document does not exist', doc);
+            console.log('document does not exist');
           }
         });
     }
+    this.setState({ fridge: userFridge });
   }
 
   handleChange(item) {
@@ -45,12 +46,24 @@ class Fridge extends React.Component {
     });
   }
 
-  handleSubmit() {
+  async handleSubmit() {
     this.setState({
       fridge: [...this.state.fridge, this.state.newItem],
       newItem: '',
     });
-    console.log(this.state);
+    let newFridge = [...this.state.fridge, this.state.newItem];
+    var user = firebase.auth().currentUser;
+    if (user) {
+      await db
+        .collection('users')
+        .doc(user.email)
+        .set(
+          {
+            fridge: newFridge,
+          },
+          { merge: true }
+        );
+    }
   }
   render() {
     var user = firebase.auth().currentUser;
