@@ -1,7 +1,6 @@
 import React from 'react';
 import LoginSignup from './LoginSignup';
 import { connect } from 'react-redux';
-import { createUser } from '../store/userStore';
 
 import firebase from 'firebase';
 import { app, db } from '../config/firebase';

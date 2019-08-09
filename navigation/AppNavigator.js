@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import MainTabNavigator, { newItemsStack } from './MainTabNavigator';
 import Login from '../screens/Login';
 import Signup from '../screens/Signup';
-import store from '../store/userStore';
 import Fridge from '../screens/Fridge';
 import Camera from '../screens/Camera';
 import ExpoCam from '../screens/ExpoCam';
@@ -31,11 +30,7 @@ let Navigation = createAppContainer(
 
 export default class Root extends React.Component {
   render() {
-    return (
-      <Provider store={store}>
-        <Navigation />
-      </Provider>
-    );
+    return <Navigation />;
   }
 }
 
