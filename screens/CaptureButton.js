@@ -17,6 +17,7 @@ export default class CaptureButton extends React.Component {
           disabled={this.props.buttonDisabled}
           title="Capture"
           accessibilityLabel="Learn more about this button"
+          color="white"
         />
       </TouchableHighlight>
     );
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     width: 160,
     borderRadius: 10,
-    backgroundColor: 'white',
+    backgroundColor: '#5bc0eb',
     alignSelf: 'center',
   },
 });

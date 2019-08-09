@@ -69,7 +69,7 @@ class RecipeSearch extends React.Component {
             ignorePantry: true,
             ranking: 1,
             limitLicense: true,
-            number: 10,
+            number: 50,
           },
         }
       );
@@ -159,7 +159,7 @@ class RecipeSearch extends React.Component {
 RecipeSearch.navigationOptions = {
   title: 'Recipe Search',
   headerStyle: {
-    backgroundColor: '#b38d97',
+    backgroundColor: '#5bc0eb',
   },
   headerTintColor: '#fff',
   headerTitleStyle: {

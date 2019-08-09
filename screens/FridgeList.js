@@ -24,20 +24,20 @@ const FridgeList = props => {
         style={styles.defaultTextEntry}
         onChangeText={item => props.handleChange(item)}
         autoCapitalize="none"
+        value={props.newItem}
       />
       <TouchableOpacity
-        title="Add Item"
         onPress={props.handleSubmit}
-        style={styles.defaultBtn}
+        style={styles.loginBtn}
+        disabled={!props.newItem}
       >
         <Text style={styles.defaultBtnText}>Add Item</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        title="Camera"
         style={styles.defaultBtn}
         onPress={() => props.navigation.navigate('ExpoCam')}
       >
-        <Text style={styles.defaultBtnText}>Camera</Text>
+        <Text style={styles.defaultBtnText}>Camera View</Text>
       </TouchableOpacity>
     </React.Fragment>
   );

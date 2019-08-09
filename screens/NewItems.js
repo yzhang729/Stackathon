@@ -46,7 +46,6 @@ class NewItems extends React.Component {
   async handleSubmit() {
     let newFridge = [...this.state.currentFridge, ...this.state.selections];
     var user = firebase.auth().currentUser;
-    console.log('user', user);
     if (user) {
       await db
         .collection('users')
@@ -66,7 +65,7 @@ class NewItems extends React.Component {
     if (!answers) {
       answers = [];
     }
-    const data = answers.map(answer => {
+    const data = answers.sort().map(answer => {
       return { id: answer, name: answer };
     });
     return (

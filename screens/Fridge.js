@@ -106,6 +106,7 @@ class Fridge extends React.Component {
             <Text style={styles.secondaryText}>Your current fridge:</Text>
             <FridgeList
               fridge={this.state.fridge}
+              newItem={this.state.newItem}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
               handleDelete={this.handleDelete}
@@ -126,7 +127,7 @@ class Fridge extends React.Component {
 Fridge.navigationOptions = {
   title: 'My Fridge',
   headerStyle: {
-    backgroundColor: '#b38d97',
+    backgroundColor: '#5bc0eb',
   },
   headerTintColor: '#fff',
   headerTitleStyle: {

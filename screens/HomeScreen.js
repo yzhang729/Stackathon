@@ -47,7 +47,7 @@ export default function HomeScreen(props) {
               </TouchableOpacity>
               <TouchableOpacity
                 title="Log In"
-                style={styles.defaultBtn}
+                style={styles.loginBtn}
                 onPress={() => navigate('Login', { button: 'Log In' })}
               >
                 <Text style={styles.defaultBtnText}>Login</Text>
@@ -81,7 +81,7 @@ export default function HomeScreen(props) {
 HomeScreen.navigationOptions = {
   title: 'Home',
   headerStyle: {
-    backgroundColor: '#b38d97',
+    backgroundColor: '#5bc0eb',
   },
   headerTintColor: '#fff',
   headerTitleStyle: {

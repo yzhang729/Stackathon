@@ -7,8 +7,6 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default class LoginSignup extends React.Component {
   render() {
-    console.log(this.props);
-
     return (
       <View style={styles.container}>
         <ScrollView
