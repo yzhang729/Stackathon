@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, TextInput, Button, View, Text } from 'react-native';
+import { ScrollView, TextInput, Image, View, Text } from 'react-native';
 import styles from './styles';
 
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -19,6 +19,12 @@ export default class LoginSignup extends React.Component {
           style={styles.container}
           contentContainerStyle={styles.contentContainer}
         >
+          <View style={styles.welcomeContainer}>
+            <Image
+              source={require('../assets/images/apple.png')}
+              style={styles.welcomeImage}
+            />
+          </View>
           <View style={styles.loginContainer}>
             {this.props.button === 'Sign Up' ? (
               <TextInput

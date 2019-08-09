@@ -23,7 +23,7 @@ class NewItems extends React.Component {
     if (user) {
       await db
         .collection('users')
-        .doc(user.email)
+        .doc(user.uid)
         .get()
         .then(function(doc) {
           if (doc.exists) {
@@ -49,7 +49,7 @@ class NewItems extends React.Component {
     if (user) {
       await db
         .collection('users')
-        .doc(user.email)
+        .doc(user.uid)
         .set(
           {
             fridge: newFridge,
@@ -71,7 +71,7 @@ class NewItems extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView>
-          <View style={styles.loginContainer}>
+          <View style={styles.defaultContainer}>
             <Text>Here's what we got! Select to add to fridge:</Text>
             <View style={styles.possibilitiesContainer}>
               <TagSelector

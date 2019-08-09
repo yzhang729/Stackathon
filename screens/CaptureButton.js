@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Button,
-  TouchableHighlight,
-  TouchableOpacity,
-  Text,
-} from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import styles from './styles';
 
 export default class CaptureButton extends React.Component {
@@ -19,15 +13,7 @@ export default class CaptureButton extends React.Component {
         style={styles.captureBtn}
         disabled={this.props.buttonDisabled}
         onPress={this.props.onClick}
-      >
-        {/* <Button
-          onPress={this.props.onClick}
-          disabled={this.props.buttonDisabled}
-          title="Capture"
-          color="white"
-        /> */}
-        {/* <Text style={styles.defaultBtnText}>Capture</Text> */}
-      </TouchableOpacity>
+      />
     );
   }
 }

@@ -32,7 +32,7 @@ class RecipeSearch extends React.Component {
     if (user) {
       await db
         .collection('users')
-        .doc(user.email)
+        .doc(user.uid)
         .get()
         .then(function(doc) {
           if (doc.exists) {
@@ -80,9 +80,6 @@ class RecipeSearch extends React.Component {
             {
               title: recipe.title,
               imgUrl: recipe.image,
-              // recipeUrl: `https://spoonacular.com/recipes/${recipe.title
-              //   .split(' ')
-              //   .join('-')}-${recipe.id}`,
               recipeUrl: `https://spoonacular.com/recipes/${slugify(
                 recipe.title
               )}-${recipe.id}`,
@@ -97,7 +94,6 @@ class RecipeSearch extends React.Component {
   }
 
   openLink(link) {
-    console.log(link);
     WebBrowser.openBrowserAsync(link);
   }
 
@@ -113,7 +109,7 @@ class RecipeSearch extends React.Component {
       <View style={styles.container}>
         <ScrollView>
           {!this.state.searched ? (
-            <View style={styles.loginContainer}>
+            <View style={styles.defaultContainer}>
               <Text style={styles.secondaryText}>
                 What do you want to use today?
               </Text>
@@ -139,6 +135,7 @@ class RecipeSearch extends React.Component {
               {this.state.recipes.map(recipe => {
                 return (
                   <View key={recipe.title} style={styles.recipeContainer}>
+                    <Text style={styles.recipeText}>{recipe.title}</Text>
                     <Image
                       source={{ uri: recipe.imgUrl }}
                       style={styles.recipeImg}
@@ -147,7 +144,7 @@ class RecipeSearch extends React.Component {
                       onPress={() => this.openLink(recipe.recipeUrl)}
                       style={styles.recipeBtn}
                     >
-                      <Text style={styles.defaultBtnText}>{recipe.title}</Text>
+                      <Text style={styles.defaultBtnText}>Go to Recipe</Text>
                     </TouchableOpacity>
                   </View>
                 );

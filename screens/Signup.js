@@ -28,22 +28,23 @@ class Signup extends React.Component {
     firebase
       .auth()
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .catch(function(error) {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-      })
-      .then(
+      .then(user =>
         db
           .collection('users')
-          .doc(this.state.email)
+          .doc(user.user.uid)
           .set({
             name: this.state.name,
             email: this.state.email,
             fridge: [],
           })
       )
-      .then(() => this.props.navigation.navigate('Fridge'));
+      .then(() => this.props.navigation.navigate('Fridge'))
+      .catch(function(error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+        alert(error.message);
+      });
   }
 
   handleChange(value, stateName) {

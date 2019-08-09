@@ -27,7 +27,7 @@ class Fridge extends React.Component {
     if (user) {
       await db
         .collection('users')
-        .doc(user.email)
+        .doc(user.uid)
         .get()
         .then(function(doc) {
           if (doc.exists) {
@@ -58,7 +58,7 @@ class Fridge extends React.Component {
     if (user) {
       await db
         .collection('users')
-        .doc(user.email)
+        .doc(user.uid)
         .set(
           {
             fridge: newFridge,
@@ -77,7 +77,7 @@ class Fridge extends React.Component {
     if (user) {
       await db
         .collection('users')
-        .doc(user.email)
+        .doc(user.uid)
         .set(
           {
             fridge: newFridge,

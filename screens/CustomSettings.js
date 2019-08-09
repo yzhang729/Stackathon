@@ -3,7 +3,6 @@ import firebase from 'firebase';
 import { app } from '../config/firebase';
 import { View, ScrollView, Text, TouchableOpacity } from 'react-native';
 import styles from './styles';
-import SettingsScreen from './SettingsScreen';
 
 class CustomSettings extends React.Component {
   constructor() {
@@ -36,7 +35,7 @@ class CustomSettings extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView>
-          <View style={styles.loginContainer}>
+          <View style={styles.defaultContainer}>
             <Text style={styles.settingsData}>
               Email: <Text style={styles.settingsData}>{this.state.email}</Text>
             </Text>

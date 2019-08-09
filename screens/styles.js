@@ -31,9 +31,13 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     alignSelf: 'center',
   },
-  loginContainer: {
+  defaultContainer: {
     alignItems: 'center',
     marginTop: '50%',
+    width: '100%',
+  },
+  loginContainer: {
+    alignItems: 'center',
     width: '100%',
   },
   welcomeImage: {
@@ -216,6 +220,14 @@ const styles = StyleSheet.create({
     color: '#424b54',
     lineHeight: 36,
     textAlign: 'center',
+  },
+  recipeText: {
+    fontSize: 14,
+    color: '#424b54',
+    lineHeight: 18,
+    textAlign: 'center',
+    paddingBottom: 5,
+    fontWeight: 'bold',
   },
   possibilitiesContainer: {
     flex: 1,

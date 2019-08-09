@@ -103,7 +103,7 @@ const RecipeStack = createStackNavigator(
 RecipeStack.navigationOptions = {
   tabBarLabel: 'Recipes',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={'ios-list'} />
+    <TabBarIcon focused={focused} name={'ios-search'} />
   ),
 };
 
