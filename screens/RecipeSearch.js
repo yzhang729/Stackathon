@@ -12,6 +12,8 @@ import axios from 'axios';
 
 import { app, db } from '../config/firebase';
 
+import { slugify } from './utils';
+
 class RecipeSearch extends React.Component {
   constructor() {
     super();
@@ -78,9 +80,12 @@ class RecipeSearch extends React.Component {
             {
               title: recipe.title,
               imgUrl: recipe.image,
-              recipeUrl: `https://spoonacular.com/recipes/${recipe.title
-                .split(' ')
-                .join('-')}-${recipe.id}`,
+              // recipeUrl: `https://spoonacular.com/recipes/${recipe.title
+              //   .split(' ')
+              //   .join('-')}-${recipe.id}`,
+              recipeUrl: `https://spoonacular.com/recipes/${slugify(
+                recipe.title
+              )}-${recipe.id}`,
             },
           ],
         })
