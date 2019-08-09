@@ -26,14 +26,15 @@ class Login extends React.Component {
     firebase
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
+      .then(() => this.props.navigation.navigate('Fridge'))
       .catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
         // ...
         console.log(errorCode, errorMessage);
-      })
-      .then(() => this.props.navigation.navigate('Fridge'));
+        alert(errorMessage);
+      });
   }
 
   handleChange(value, stateName) {
