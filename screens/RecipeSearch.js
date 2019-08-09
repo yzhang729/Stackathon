@@ -63,6 +63,7 @@ class RecipeSearch extends React.Component {
   searchAgain() {
     this.setState({
       selections: [],
+      recipes: [],
       searched: false,
     });
   }
@@ -94,6 +95,7 @@ class RecipeSearch extends React.Component {
 
   async handleSubmit() {
     const submission = this.state.selections.join(',');
+    console.log(submission);
     try {
       const { data } = await axios.get(
         'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients',
