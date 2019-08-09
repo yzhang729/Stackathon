@@ -19,23 +19,6 @@ class RecipeBox extends React.Component {
   }
 
   componentDidMount() {
-    // var user = firebase.auth().currentUser;
-    // let userRecipeBox = [];
-    // if (user) {
-    //   await db
-    //     .collection('users')
-    //     .doc(user.uid)
-    //     .get()
-    //     .then(function(doc) {
-    //       if (doc.exists) {
-    //         console.log('document data obtained');
-    //         userRecipeBox = doc.data().recipeBox;
-    //       } else {
-    //         console.log('document does not exist');
-    //       }
-    //     });
-    // }
-    // this.setState({ recipeBox: userRecipeBox });
     this._onFocusListener = this.props.navigation.addListener(
       'didFocus',
       async payload => {
@@ -101,7 +84,7 @@ class RecipeBox extends React.Component {
                     </TouchableOpacity>
                     <TouchableOpacity
                       onPress={() => this.deleteRecipe(recipe)}
-                      style={styles.recipeBtnGreen}
+                      style={styles.recipeBtnRed}
                     >
                       <Text style={styles.defaultBtnText}>Delete Recipe</Text>
                     </TouchableOpacity>

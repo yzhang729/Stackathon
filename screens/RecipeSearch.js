@@ -20,30 +20,38 @@ class RecipeSearch extends React.Component {
       selections: [],
       searched: false,
       recipes: [],
+      recipeBox: [],
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.searchAgain = this.searchAgain.bind(this);
     this.addRecipe = this.addRecipe.bind(this);
   }
 
-  async componentDidMount() {
-    var user = firebase.auth().currentUser;
-    let userFridge = [];
-    if (user) {
-      await db
-        .collection('users')
-        .doc(user.uid)
-        .get()
-        .then(function(doc) {
-          if (doc.exists) {
-            console.log('document data obtained');
-            userFridge = doc.data().fridge;
-          } else {
-            console.log('document does not exist');
-          }
-        });
-    }
-    this.setState({ fridge: userFridge });
+  componentDidMount() {
+    this._onFocusListener = this.props.navigation.addListener(
+      'didFocus',
+      async payload => {
+        var user = firebase.auth().currentUser;
+        let userFridge = [];
+        let userRecipeBox = [];
+        if (user) {
+          await db
+            .collection('users')
+            .doc(user.uid)
+            .get()
+            .then(function(doc) {
+              if (doc.exists) {
+                console.log('document data obtained');
+                userFridge = doc.data().fridge;
+                userRecipeBox = doc.data().recipeBox;
+              } else {
+                console.log('document does not exist');
+              }
+            });
+        }
+        this.setState({ fridge: userFridge, recipeBox: userRecipeBox });
+      }
+    );
   }
 
   clickHandler(selection) {
@@ -79,6 +87,9 @@ class RecipeSearch extends React.Component {
         .doc(user.uid)
         .set({ recipeBox: recipeBox }, { merge: true });
     }
+    this.setState({
+      recipeBox: [...this.state.recipeBox, recipe],
+    });
   }
 
   async handleSubmit() {
@@ -176,12 +187,25 @@ class RecipeSearch extends React.Component {
                       >
                         <Text style={styles.defaultBtnText}>Go to Recipe</Text>
                       </TouchableOpacity>
-                      <TouchableOpacity
-                        onPress={() => this.addRecipe(recipe)}
-                        style={styles.recipeBtnGreen}
-                      >
-                        <Text style={styles.defaultBtnText}>Save Recipe</Text>
-                      </TouchableOpacity>
+                      {this.state.recipeBox
+                        .map(elem => elem.recipeUrl)
+                        .indexOf(recipe.recipeUrl) < 0 ? (
+                        <TouchableOpacity
+                          onPress={() => this.addRecipe(recipe)}
+                          style={styles.recipeBtnGreen}
+                        >
+                          <Text style={styles.defaultBtnText}>Save Recipe</Text>
+                        </TouchableOpacity>
+                      ) : (
+                        <TouchableOpacity
+                          disabled={true}
+                          style={styles.recipeBtnGray}
+                        >
+                          <Text style={styles.defaultBtnText}>
+                            Already in Box
+                          </Text>
+                        </TouchableOpacity>
+                      )}
                     </View>
                   </View>
                 );
