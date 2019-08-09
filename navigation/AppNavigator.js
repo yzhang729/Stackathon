@@ -1,16 +1,13 @@
 import React from 'react';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-import { Provider } from 'react-redux';
 
-import MainTabNavigator, { newItemsStack } from './MainTabNavigator';
+import MainTabNavigator from './MainTabNavigator';
 import Login from '../screens/Login';
 import Signup from '../screens/Signup';
 import Fridge from '../screens/Fridge';
-import Camera from '../screens/Camera';
 import ExpoCam from '../screens/ExpoCam';
 import NewItems from '../screens/NewItems';
 import Home from '../screens/HomeScreen';
-import HomeScreen from '../screens/HomeScreen';
 import RecipeSearch from '../screens/RecipeSearch';
 
 let Navigation = createAppContainer(
@@ -21,7 +18,6 @@ let Navigation = createAppContainer(
     Login: Login,
     Signup: Signup,
     Fridge: MainTabNavigator,
-    Camera: Camera,
     ExpoCam: ExpoCam,
     NewItems: NewItems,
     RecipeSearch: RecipeSearch,
