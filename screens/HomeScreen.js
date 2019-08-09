@@ -1,18 +1,10 @@
 import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
-import {
-  Image,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
-  Button,
-} from 'react-native';
+import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import firebase from 'firebase';
 
 import styles from './styles';
 
-import { MonoText } from '../components/StyledText';
 import { app, db } from '../config/firebase';
 
 export default function HomeScreen(props) {

@@ -5,12 +5,10 @@ import TagSelector from 'react-native-tag-selector';
 
 import * as WebBrowser from 'expo-web-browser';
 
-import { config } from '../config/firebase';
 import styles from './styles';
-import { connect } from 'react-redux';
 import axios from 'axios';
 
-import { app, db } from '../config/firebase';
+import { app, db, config } from '../config/firebase';
 
 import { slugify } from './utils';
 
