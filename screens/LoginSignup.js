@@ -7,6 +7,13 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default class LoginSignup extends React.Component {
   render() {
+    let routeName = this.props.navigation.state.routeName;
+    let conditional;
+    if (routeName === 'Signup') {
+      conditional = this.props.name && this.props.email && this.props.password;
+    } else {
+      conditional = this.props.email && this.props.password;
+    }
     return (
       <View style={styles.container}>
         <ScrollView
@@ -43,7 +50,8 @@ export default class LoginSignup extends React.Component {
               title={this.props.button}
               onPress={this.props.handleSubmit}
               type="outline"
-              style={styles.defaultBtn}
+              style={!conditional ? styles.disabledBtn : styles.loginBtn}
+              disabled={!conditional}
             >
               <Text style={styles.defaultBtnText}>{this.props.button}</Text>
             </TouchableOpacity>

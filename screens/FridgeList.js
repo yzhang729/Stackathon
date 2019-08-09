@@ -28,7 +28,7 @@ const FridgeList = props => {
       />
       <TouchableOpacity
         onPress={props.handleSubmit}
-        style={styles.loginBtn}
+        style={!props.newItem ? styles.disabledBtn : styles.loginBtn}
         disabled={!props.newItem}
       >
         <Text style={styles.defaultBtnText}>Add Item</Text>

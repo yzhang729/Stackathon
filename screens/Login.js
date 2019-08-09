@@ -49,6 +49,8 @@ class Login extends React.Component {
           navigation={this.props.navigation}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
+          email={this.state.email}
+          password={this.state.password}
         />
       </React.Fragment>
     );

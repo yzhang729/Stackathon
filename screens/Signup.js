@@ -59,6 +59,9 @@ class Signup extends React.Component {
         navigation={this.props.navigation}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
+        email={this.state.email}
+        name={this.state.name}
+        password={this.state.password}
       />
     );
   }

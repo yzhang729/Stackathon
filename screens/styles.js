@@ -124,6 +124,18 @@ const styles = StyleSheet.create({
     borderColor: '#fff',
     width: 200,
   },
+  disabledBtn: {
+    marginRight: 40,
+    marginLeft: 40,
+    marginTop: 10,
+    paddingTop: 10,
+    paddingBottom: 10,
+    backgroundColor: 'gray',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#fff',
+    width: 200,
+  },
   loginBtn: {
     marginRight: 40,
     marginLeft: 40,
