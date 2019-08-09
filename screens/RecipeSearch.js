@@ -98,7 +98,7 @@ class RecipeSearch extends React.Component {
             ignorePantry: true,
             ranking: 1,
             limitLicense: true,
-            number: 50,
+            number: 25,
           },
         }
       );
