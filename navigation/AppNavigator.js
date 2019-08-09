@@ -12,6 +12,7 @@ import ExpoCam from '../screens/ExpoCam';
 import NewItems from '../screens/NewItems';
 import Home from '../screens/HomeScreen';
 import HomeScreen from '../screens/HomeScreen';
+import RecipeSearch from '../screens/RecipeSearch';
 
 let Navigation = createAppContainer(
   createSwitchNavigator({
@@ -24,6 +25,7 @@ let Navigation = createAppContainer(
     Camera: Camera,
     ExpoCam: ExpoCam,
     NewItems: NewItems,
+    RecipeSearch: RecipeSearch,
   })
 );
 

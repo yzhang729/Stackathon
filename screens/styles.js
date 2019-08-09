@@ -229,6 +229,36 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
   },
+  recipeContainer: {
+    flex: 1,
+    textAlign: 'center',
+    flexDirection: 'column',
+    width: '90%',
+    borderWidth: 1,
+    borderColor: 'black',
+    justifyContent: 'center',
+    paddingBottom: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+    marginTop: 10,
+    borderRadius: 10,
+    paddingTop: 10,
+  },
+  recipeImg: {
+    width: '100%',
+    height: 225,
+  },
+  recipeBtn: {
+    marginTop: 10,
+    paddingTop: 10,
+    paddingBottom: 10,
+    backgroundColor: '#b38d97',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#fff',
+    width: '100%',
+    alignSelf: 'center',
+  },
 });
 
 export default styles;

@@ -12,6 +12,7 @@ import Fridge from '../screens/Fridge';
 import Login from '../screens/Login';
 import ExpoCamera from '../screens/ExpoCam';
 import NewItems from '../screens/NewItems';
+import RecipeSearch from '../screens/RecipeSearch';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -92,6 +93,22 @@ SettingsStack.navigationOptions = {
 
 SettingsStack.path = '';
 
+const RecipeStack = createStackNavigator(
+  {
+    RecipeSearch: RecipeSearch,
+  },
+  config
+);
+
+RecipeStack.navigationOptions = {
+  tabBarLabel: 'Recipes',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={'ios-list'} />
+  ),
+};
+
+RecipeStack.path = '';
+
 const LoginStack = createStackNavigator(
   {
     Home: HomeScreen,
@@ -107,6 +124,7 @@ LoginStack.path = '';
 const tabNavigator = createBottomTabNavigator({
   FridgeStack,
   CameraStack,
+  RecipeStack,
   SettingsStack,
 });
 

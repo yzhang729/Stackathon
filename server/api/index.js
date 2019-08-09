@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 router.use('/auth/users', require('./users'));
-router.use('/fridges', require('./fridges'));
+router.use('/recipes', require('./recipes'));
 
 router.use(function(req, res, next) {
   const err = new Error('Not found.');
