@@ -41,12 +41,11 @@ class CustomSettings extends React.Component {
             </Text>
           </View>
           <TouchableOpacity
-            title="Back to Home"
             onPress={() => this.handleLogout()}
             type="outline"
-            style={styles.defaultBtn}
+            style={styles.logoutBtn}
           >
-            <Text style={styles.defaultBtnText}>Logout</Text>
+            <Text style={styles.logoutBtnText}>Logout</Text>
           </TouchableOpacity>
         </ScrollView>
       </View>

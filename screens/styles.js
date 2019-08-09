@@ -103,9 +103,9 @@ const styles = StyleSheet.create({
     color: '#2e78b7',
   },
   fridgeContainer: {
-    position: 'absolute',
-    paddingTop: '50%',
-    alignSelf: 'center',
+    alignItems: 'center',
+    marginTop: '15%',
+    width: '100%',
   },
   fridgeAddItem: {
     height: 20,
@@ -205,10 +205,30 @@ const styles = StyleSheet.create({
   settingsContainer: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   settingsTitle: { width: '50%' },
   settingsData: { width: '50%' },
+  logoutBtn: {
+    marginRight: 40,
+    marginLeft: 40,
+    marginTop: 10,
+    paddingTop: 10,
+    paddingBottom: 10,
+    backgroundColor: 'white',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: 'red',
+    width: 200,
+    alignSelf: 'center',
+  },
+  logoutBtnText: {
+    color: 'red',
+    textAlign: 'center',
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
 });
 
 export default styles;

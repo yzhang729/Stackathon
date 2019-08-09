@@ -96,7 +96,7 @@ class Fridge extends React.Component {
     } else {
       renderPage = (
         <React.Fragment>
-          <View style={styles.loginContainer}>
+          <View style={styles.fridgeContainer}>
             <Text style={styles.welcomeText}>Welcome back, {user.email}</Text>
             <Text style={styles.secondaryText}>Your current fridge:</Text>
             <FridgeList
