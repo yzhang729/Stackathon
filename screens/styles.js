@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: '30%',
     marginBottom: 20,
+    alignSelf: 'center',
   },
   loginContainer: {
     alignItems: 'center',
@@ -40,7 +41,6 @@ const styles = StyleSheet.create({
     height: 80,
     resizeMode: 'contain',
     marginTop: 3,
-    marginLeft: -10,
   },
   getStartedContainer: {
     alignItems: 'center',
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
   },
   fridgeContainer: {
     alignItems: 'center',
-    marginTop: '15%',
+    marginTop: '10%',
     width: '100%',
   },
   fridgeAddItem: {
@@ -176,6 +176,8 @@ const styles = StyleSheet.create({
     color: '#424b54',
     lineHeight: 36,
     textAlign: 'center',
+    fontFamily: 'Avenir',
+    fontWeight: 'bold',
   },
   fridgeListView: {
     flex: 1,
@@ -207,6 +209,7 @@ const styles = StyleSheet.create({
   },
   fridgeItem: {
     marginLeft: 10,
+    fontFamily: 'Avenir',
   },
   secondaryText: {
     fontSize: 18,
@@ -252,6 +255,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingLeft: 10,
     paddingRight: 10,
+    fontFamily: 'Avenir',
   },
   recipeContainer: {
     flex: 1,
@@ -259,7 +263,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     width: '90%',
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: '#5bc0eb',
     justifyContent: 'center',
     paddingBottom: 10,
     paddingLeft: 10,
@@ -276,12 +280,23 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingTop: 10,
     paddingBottom: 10,
-    backgroundColor: '#b38d97',
+    backgroundColor: '#9bc53d',
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: '#fff',
+    borderColor: '#9bc53d',
     width: '100%',
     alignSelf: 'center',
+  },
+  captureBtn: {
+    marginBottom: 30,
+    width: 160,
+    borderRadius: 10,
+    backgroundColor: '#5bc0eb',
+    alignSelf: 'center',
+    borderWidth: 1,
+    borderColor: '#5bc0eb',
+    height: 30,
+    justifyContent: 'center',
   },
 });
 

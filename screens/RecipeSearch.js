@@ -114,7 +114,9 @@ class RecipeSearch extends React.Component {
         <ScrollView>
           {!this.state.searched ? (
             <View style={styles.loginContainer}>
-              <Text>Your current items:</Text>
+              <Text style={styles.secondaryText}>
+                What do you want to use today?
+              </Text>
               <View style={styles.possibilitiesContainer}>
                 <TagSelector
                   tags={data}
@@ -131,7 +133,9 @@ class RecipeSearch extends React.Component {
             </View>
           ) : (
             <View style={styles.fridgeContainer}>
-              <Text>Here are some suggestions!</Text>
+              <Text style={styles.secondaryText}>
+                Here are some suggestions!
+              </Text>
               {this.state.recipes.map(recipe => {
                 return (
                   <View key={recipe.title} style={styles.recipeContainer}>
@@ -164,6 +168,7 @@ RecipeSearch.navigationOptions = {
   headerTintColor: '#fff',
   headerTitleStyle: {
     fontWeight: 'bold',
+    fontFamily: 'Avenir',
   },
 };
 

@@ -62,6 +62,7 @@ CustomSettings.navigationOptions = {
   headerTintColor: '#fff',
   headerTitleStyle: {
     fontWeight: 'bold',
+    fontFamily: 'Avenir',
   },
 };
 

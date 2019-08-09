@@ -2,7 +2,6 @@ import React from 'react';
 import { ScrollView, TextInput, Button, View, Text } from 'react-native';
 import styles from './styles';
 
-import { MonoText } from '../components/StyledText';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default class LoginSignup extends React.Component {
