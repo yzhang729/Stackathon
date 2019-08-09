@@ -26,7 +26,7 @@ export default class CaptureButton extends React.Component {
           title="Capture"
           color="white"
         /> */}
-        <Text style={styles.defaultBtnText}>Capture</Text>
+        {/* <Text style={styles.defaultBtnText}>Capture</Text> */}
       </TouchableOpacity>
     );
   }

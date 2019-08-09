@@ -289,13 +289,13 @@ const styles = StyleSheet.create({
   },
   captureBtn: {
     marginBottom: 30,
-    width: 160,
-    borderRadius: 10,
-    backgroundColor: '#5bc0eb',
+    width: 60,
+    height: 60,
+    borderRadius: 50,
+    backgroundColor: 'white',
     alignSelf: 'center',
-    borderWidth: 1,
+    borderWidth: 5,
     borderColor: '#5bc0eb',
-    height: 30,
     justifyContent: 'center',
   },
 });
