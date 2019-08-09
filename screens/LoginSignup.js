@@ -45,6 +45,7 @@ export default class LoginSignup extends React.Component {
             >
               <Text style={styles.defaultBtnText}>Back to Home</Text>
             </TouchableOpacity>
+
             <Text>{this.props.userEmail}</Text>
           </View>
         </ScrollView>

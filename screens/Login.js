@@ -3,7 +3,6 @@ import LoginSignup from './LoginSignup';
 import firebase from 'firebase';
 
 import { app } from '../config/firebase';
-var user = firebase.auth().currentUser;
 
 class Login extends React.Component {
   constructor() {
@@ -14,6 +13,13 @@ class Login extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    var user = firebase.auth().currentUser;
+    if (user) {
+      this.props.navigation.navigate('Fridge');
+    }
   }
 
   handleSubmit() {

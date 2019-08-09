@@ -17,6 +17,13 @@ class Signup extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    var user = firebase.auth().currentUser;
+    if (user) {
+      this.props.navigation.navigate('Fridge');
+    }
+  }
+
   handleSubmit() {
     firebase
       .auth()

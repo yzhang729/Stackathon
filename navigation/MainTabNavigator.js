@@ -7,9 +7,11 @@ import {
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import SettingsScreen from '../screens/CustomSettings';
 import Fridge from '../screens/Fridge';
+import Login from '../screens/Login';
+import ExpoCamera from '../screens/ExpoCam';
+import NewItems from '../screens/NewItems';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -55,6 +57,22 @@ FridgeStack.navigationOptions = {
 
 FridgeStack.path = '';
 
+const CameraStack = createStackNavigator(
+  {
+    ExpoCam: ExpoCamera,
+  },
+  config
+);
+
+CameraStack.navigationOptions = {
+  tabBarLabel: 'Camera',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={'md-camera'} />
+  ),
+};
+
+CameraStack.path = '';
+
 const SettingsStack = createStackNavigator(
   {
     Settings: SettingsScreen,
@@ -74,12 +92,31 @@ SettingsStack.navigationOptions = {
 
 SettingsStack.path = '';
 
+const LoginStack = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Fridge: Fridge,
+    Login: Login,
+  },
+  config
+);
+
+LoginStack.path = '';
+
+//this will change the bottom icons
 const tabNavigator = createBottomTabNavigator({
-  HomeStack,
   FridgeStack,
+  CameraStack,
   SettingsStack,
 });
 
-tabNavigator.path = '';
+tabNavigator.path = 'Fridge';
 
 export default tabNavigator;
+
+export const newItemsStack = createBottomTabNavigator(
+  {
+    NewItemsStack: { screen: NewItems },
+  },
+  { initialRoute: 'NewItems' }
+);

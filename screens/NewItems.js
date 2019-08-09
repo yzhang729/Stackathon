@@ -87,6 +87,7 @@ class NewItems extends React.Component {
             >
               <Text style={styles.defaultBtnText}>Back to Fridge</Text>
             </TouchableOpacity>
+
             <TouchableOpacity
               onPress={this.handleSubmit}
               style={styles.defaultBtn}

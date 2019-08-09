@@ -201,6 +201,13 @@ const styles = StyleSheet.create({
     width: '20%',
     height: 40,
   },
+  settingsContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  settingsTitle: { width: '50%' },
+  settingsData: { width: '50%' },
 });
 
 export default styles;
