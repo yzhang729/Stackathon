@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Button, View, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import styles from './styles';
 import TagSelector from 'react-native-tag-selector';
 
@@ -73,7 +73,7 @@ class NewItems extends React.Component {
       <View style={styles.container}>
         <ScrollView>
           <View style={styles.loginContainer}>
-            <Text>Here's what we got from that image: </Text>
+            <Text>Here's what we got! Select to add to fridge:</Text>
             <View style={styles.possibilitiesContainer}>
               <TagSelector
                 tags={data}

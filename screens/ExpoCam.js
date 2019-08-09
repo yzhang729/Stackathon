@@ -82,7 +82,7 @@ export default class CameraExample extends React.Component {
         );
         this.displayAnswer(answers);
       })
-      .catch(err => alert(err));
+      .catch(err => alert('an error has occurred', err));
   }
 
   render() {
@@ -126,8 +126,7 @@ export default class CameraExample extends React.Component {
                 <Text
                   style={{ fontSize: 18, marginBottom: 10, color: 'white' }}
                 >
-                  {' '}
-                  Flip{' '}
+                  Flip
                 </Text>
               </TouchableOpacity>
             </View>
