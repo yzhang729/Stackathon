@@ -7,6 +7,8 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default class LoginSignup extends React.Component {
   render() {
+    console.log(this.props);
+
     return (
       <View style={styles.container}>
         <ScrollView
@@ -14,6 +16,16 @@ export default class LoginSignup extends React.Component {
           contentContainerStyle={styles.contentContainer}
         >
           <View style={styles.loginContainer}>
+            {this.props.button === 'Sign Up' ? (
+              <TextInput
+                style={styles.defaultTextEntry}
+                autoCapitalize="none"
+                onChangeText={name => this.props.handleChange(name, 'name')}
+                placeholder="Enter name here"
+              />
+            ) : (
+              <React.Fragment />
+            )}
             <TextInput
               style={styles.defaultTextEntry}
               autoCapitalize="none"

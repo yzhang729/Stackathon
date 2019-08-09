@@ -12,6 +12,7 @@ class Signup extends React.Component {
     this.state = {
       email: '',
       password: '',
+      name: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -38,6 +39,7 @@ class Signup extends React.Component {
           .collection('users')
           .doc(this.state.email)
           .set({
+            name: this.state.name,
             email: this.state.email,
             fridge: [],
           })

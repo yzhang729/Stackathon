@@ -11,6 +11,7 @@ class Fridge extends React.Component {
   constructor() {
     super();
     this.state = {
+      name: '',
       fridge: [],
       newItem: '',
     };
@@ -22,6 +23,7 @@ class Fridge extends React.Component {
   async componentDidMount() {
     var user = firebase.auth().currentUser;
     let userFridge = [];
+    let userName = '';
     if (user) {
       await db
         .collection('users')
@@ -31,12 +33,13 @@ class Fridge extends React.Component {
           if (doc.exists) {
             console.log('document data obtained');
             userFridge = doc.data().fridge;
+            userName = doc.data().name;
           } else {
             console.log('document does not exist');
           }
         });
     }
-    this.setState({ fridge: userFridge });
+    this.setState({ fridge: userFridge, name: userName });
   }
 
   handleChange(item) {
@@ -97,7 +100,9 @@ class Fridge extends React.Component {
       renderPage = (
         <React.Fragment>
           <View style={styles.fridgeContainer}>
-            <Text style={styles.welcomeText}>Welcome back, {user.email}</Text>
+            <Text style={styles.welcomeText}>
+              Welcome back, {this.state.name}
+            </Text>
             <Text style={styles.secondaryText}>Your current fridge:</Text>
             <FridgeList
               fridge={this.state.fridge}
