@@ -288,16 +288,27 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 225,
   },
-  recipeBtn: {
+  recipeBtnGreen: {
+    flex: 1,
     marginTop: 10,
     paddingTop: 10,
     paddingBottom: 10,
     backgroundColor: '#9bc53d',
     borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#9bc53d',
-    width: '100%',
-    alignSelf: 'center',
+    borderWidth: 5,
+    borderColor: '#fff',
+    width: '40%',
+  },
+  recipeBtnBlue: {
+    flex: 1,
+    marginTop: 10,
+    paddingTop: 10,
+    paddingBottom: 10,
+    backgroundColor: '#5bc0eb',
+    borderRadius: 10,
+    borderWidth: 5,
+    borderColor: '#fff',
+    width: '40%',
   },
   captureBtn: {
     marginBottom: 30,
@@ -309,6 +320,12 @@ const styles = StyleSheet.create({
     borderWidth: 5,
     borderColor: '#5bc0eb',
     justifyContent: 'center',
+  },
+  twoBtnContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

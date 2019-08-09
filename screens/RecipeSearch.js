@@ -22,6 +22,8 @@ class RecipeSearch extends React.Component {
       recipes: [],
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.searchAgain = this.searchAgain.bind(this);
+    this.addRecipe = this.addRecipe.bind(this);
   }
 
   async componentDidMount() {
@@ -48,6 +50,35 @@ class RecipeSearch extends React.Component {
     this.setState({
       selections: selection,
     });
+  }
+
+  searchAgain() {
+    this.setState({
+      selections: [],
+      searched: false,
+    });
+  }
+
+  async addRecipe(recipe) {
+    var user = firebase.auth().currentUser;
+    let recipeBox = [];
+    if (user) {
+      await db
+        .collection('users')
+        .doc(user.uid)
+        .get()
+        .then(function(doc) {
+          if (doc.exists) {
+            recipeBox = [...doc.data().recipeBox, recipe];
+          } else {
+            console.log('document does not exist');
+          }
+        });
+      await db
+        .collection('users')
+        .doc(user.uid)
+        .set({ recipeBox: recipeBox }, { merge: true });
+    }
   }
 
   async handleSubmit() {
@@ -138,15 +169,29 @@ class RecipeSearch extends React.Component {
                       source={{ uri: recipe.imgUrl }}
                       style={styles.recipeImg}
                     />
-                    <TouchableOpacity
-                      onPress={() => this.openLink(recipe.recipeUrl)}
-                      style={styles.recipeBtn}
-                    >
-                      <Text style={styles.defaultBtnText}>Go to Recipe</Text>
-                    </TouchableOpacity>
+                    <View style={styles.twoBtnContainer}>
+                      <TouchableOpacity
+                        onPress={() => this.openLink(recipe.recipeUrl)}
+                        style={styles.recipeBtnGreen}
+                      >
+                        <Text style={styles.defaultBtnText}>Go to Recipe</Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        onPress={() => this.addRecipe(recipe)}
+                        style={styles.recipeBtnGreen}
+                      >
+                        <Text style={styles.defaultBtnText}>Save Recipe</Text>
+                      </TouchableOpacity>
+                    </View>
                   </View>
                 );
               })}
+              <TouchableOpacity
+                onPress={this.searchAgain}
+                style={styles.defaultBtn}
+              >
+                <Text style={styles.defaultBtnText}>Search Again</Text>
+              </TouchableOpacity>
             </View>
           )}
         </ScrollView>

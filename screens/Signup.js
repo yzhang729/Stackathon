@@ -35,6 +35,7 @@ class Signup extends React.Component {
             name: this.state.name,
             email: this.state.email,
             fridge: [],
+            recipeBox: [],
           })
       )
       .then(() => this.props.navigation.navigate('Fridge'))
