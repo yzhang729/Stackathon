@@ -1,22 +1,60 @@
 import React from 'react';
 import firebase from 'firebase';
-import { app } from '../config/firebase';
-import { View, ScrollView, Text, TouchableOpacity } from 'react-native';
+import { app, db } from '../config/firebase';
+import {
+  View,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  CheckBox,
+} from 'react-native';
 import styles from './styles';
+import TagSelector from 'react-native-tag-selector';
 
 class CustomSettings extends React.Component {
   constructor() {
     super();
     this.state = {
       email: '',
+      intolerances: [],
     };
     this.handleLogout = this.handleLogout.bind(this);
+    this.clickHandler = this.clickHandler.bind(this);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    var user = firebase.auth().currentUser;
+    let userIntolerances = [];
+    if (user) {
+      await db
+        .collection('users')
+        .doc(user.uid)
+        .get()
+        .then(function(doc) {
+          if (doc.exists) {
+            console.log('doc data obtained');
+            userIntolerances = doc.data().intolerances;
+          } else {
+            console.log('doc does not exist');
+          }
+        });
+    }
+    this.setState({ email: user.email, intolerances: userIntolerances });
+  }
+
+  clickHandler(selection) {
+    this.setState({
+      intolerances: selection,
+    });
+  }
+
+  async handleSubmit() {
     var user = firebase.auth().currentUser;
     if (user) {
-      this.setState({ email: user.email });
+      await db
+        .collection('users')
+        .doc(user.uid)
+        .set({ intolerances: this.state.intolerances }, { merge: true });
     }
   }
 
@@ -32,6 +70,19 @@ class CustomSettings extends React.Component {
   }
 
   render() {
+    const intolerancesList = [
+      'dairy',
+      'gluten',
+      'peanut',
+      'shellfish',
+      'sesame',
+      'soy',
+      'tree nut',
+      'sulfite',
+    ];
+    const intolerancesObj = intolerancesList.map(intolerance => {
+      return { id: intolerance, name: intolerance };
+    });
     return (
       <View style={styles.container}>
         <ScrollView>
@@ -39,14 +90,28 @@ class CustomSettings extends React.Component {
             <Text style={styles.settingsData}>
               Email: <Text style={styles.settingsData}>{this.state.email}</Text>
             </Text>
+
+            <Text style={styles.secondaryText}>Intolerances</Text>
+            <TagSelector
+              tags={intolerancesObj}
+              customSelect={this.state.intolerances}
+              onChange={selected => this.clickHandler(selected)}
+            />
+            <TouchableOpacity
+              onPress={() => this.handleSubmit()}
+              type="outline"
+              style={styles.defaultBtn}
+            >
+              <Text style={styles.defaultBtnText}>Submit Changes</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => this.handleLogout()}
+              type="outline"
+              style={styles.logoutBtn}
+            >
+              <Text style={styles.logoutBtnText}>Logout</Text>
+            </TouchableOpacity>
           </View>
-          <TouchableOpacity
-            onPress={() => this.handleLogout()}
-            type="outline"
-            style={styles.logoutBtn}
-          >
-            <Text style={styles.logoutBtnText}>Logout</Text>
-          </TouchableOpacity>
         </ScrollView>
       </View>
     );
