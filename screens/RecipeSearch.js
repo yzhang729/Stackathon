@@ -98,7 +98,7 @@ class RecipeSearch extends React.Component {
     console.log(submission);
     try {
       const { data } = await axios.get(
-        'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients',
+        'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/searchComplex',
         {
           headers: {
             'x-rapidapi-key':
@@ -107,15 +107,16 @@ class RecipeSearch extends React.Component {
               'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
           },
           params: {
-            ingredients: submission,
-            ignorePantry: true,
+            includeIngredients: submission,
+            // ignorePantry: true,
             ranking: 1,
             limitLicense: true,
+            offset: 0,
             number: 25,
           },
         }
       );
-      data.forEach(recipe =>
+      data.results.forEach(recipe =>
         this.setState({
           recipes: [
             ...this.state.recipes,
