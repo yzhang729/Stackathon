@@ -87,16 +87,20 @@ class CustomSettings extends React.Component {
       <View style={styles.container}>
         <ScrollView>
           <View style={styles.defaultContainer}>
-            <Text style={styles.settingsData}>
-              Email: <Text style={styles.settingsData}>{this.state.email}</Text>
-            </Text>
+            <View style={styles.settingsContainer}>
+              <Text style={styles.settingsTitle}>Email: </Text>
+              <Text style={styles.settingsData}>{this.state.email}</Text>
 
-            <Text style={styles.secondaryText}>Intolerances</Text>
-            <TagSelector
-              tags={intolerancesObj}
-              customSelect={this.state.intolerances}
-              onChange={selected => this.clickHandler(selected)}
-            />
+              <Text style={styles.settingsTitle}>Intolerances:</Text>
+              <TagSelector
+                tags={intolerancesObj}
+                customSelect={this.state.intolerances}
+                onChange={selected => this.clickHandler(selected)}
+                containerStyle={styles.settingsTagContainer}
+                tagStyle={styles.settingsTag}
+                selectedTagStyle={styles.settingsTagSelected}
+              />
+            </View>
             <TouchableOpacity
               onPress={() => this.handleSubmit()}
               type="outline"
