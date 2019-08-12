@@ -137,7 +137,6 @@ const LoginStack = createStackNavigator(
 
 LoginStack.path = '';
 
-//this will change the bottom icons
 const tabNavigator = createBottomTabNavigator({
   FridgeStack,
   CameraStack,

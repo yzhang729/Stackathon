@@ -13,8 +13,6 @@ import RecipeBox from '../screens/RecipeBox';
 
 let Navigation = createAppContainer(
   createSwitchNavigator({
-    // You could add another route here for authentication.
-    // Read more at https://reactnavigation.org/docs/en/auth-flow.html
     Main: Home,
     Login: Login,
     Signup: Signup,

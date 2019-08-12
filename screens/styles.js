@@ -111,6 +111,11 @@ const styles = StyleSheet.create({
     marginTop: '10%',
     width: '100%',
   },
+  recipeSearchContainer: {
+    alignItems: 'center',
+    marginTop: '5%',
+    width: '100%',
+  },
   fridgeAddItem: {
     height: 20,
     borderColor: 'gray',

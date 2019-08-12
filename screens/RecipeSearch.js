@@ -103,7 +103,6 @@ class RecipeSearch extends React.Component {
   async handleSubmit() {
     const submission = this.state.selections.join(',');
     const userIntolerances = this.state.intolerances.join(',');
-    console.log(userIntolerances);
     try {
       const { data } = await axios.get(
         'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/searchComplex',
@@ -116,7 +115,6 @@ class RecipeSearch extends React.Component {
           },
           params: {
             includeIngredients: submission,
-            // ignorePantry: true,
             ranking: 1,
             limitLicense: true,
             offset: 0,
@@ -180,10 +178,8 @@ class RecipeSearch extends React.Component {
               </TouchableOpacity>
             </View>
           ) : (
-            <View style={styles.fridgeContainer}>
-              <Text style={styles.secondaryText}>
-                Here are some suggestions!
-              </Text>
+            <View style={styles.recipeSearchContainer}>
+              <Text style={styles.welcomeText}>Here are some suggestions!</Text>
               {this.state.recipes.map(recipe => {
                 return (
                   <View key={recipe.title} style={styles.recipeContainer}>
