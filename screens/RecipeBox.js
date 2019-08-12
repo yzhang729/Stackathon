@@ -65,32 +65,36 @@ class RecipeBox extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView>
-          <View style={styles.fridgeContainer}>
-            {this.state.recipeBox.map(recipe => {
-              return (
-                <View key={recipe.title} style={styles.recipeContainer}>
-                  <Text style={styles.recipeText}>{recipe.title}</Text>
-                  <Image
-                    source={{ uri: recipe.imgUrl }}
-                    style={styles.recipeImg}
-                  />
-                  <View style={styles.twoBtnContainer}>
-                    <TouchableOpacity
-                      onPress={() => this.openLink(recipe.recipeUrl)}
-                      style={styles.recipeBtnGreen}
-                    >
-                      <Text style={styles.defaultBtnText}>Go to Recipe</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                      onPress={() => this.deleteRecipe(recipe)}
-                      style={styles.recipeBtnRed}
-                    >
-                      <Text style={styles.defaultBtnText}>Delete Recipe</Text>
-                    </TouchableOpacity>
+          <View style={styles.recipeSearchContainer}>
+            {this.state.recipeBox.length ? (
+              this.state.recipeBox.map(recipe => {
+                return (
+                  <View key={recipe.title} style={styles.recipeContainer}>
+                    <Text style={styles.recipeText}>{recipe.title}</Text>
+                    <Image
+                      source={{ uri: recipe.imgUrl }}
+                      style={styles.recipeImg}
+                    />
+                    <View style={styles.twoBtnContainer}>
+                      <TouchableOpacity
+                        onPress={() => this.openLink(recipe.recipeUrl)}
+                        style={styles.recipeBtnGreen}
+                      >
+                        <Text style={styles.defaultBtnText}>Go to Recipe</Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        onPress={() => this.deleteRecipe(recipe)}
+                        style={styles.recipeBtnRed}
+                      >
+                        <Text style={styles.defaultBtnText}>Delete Recipe</Text>
+                      </TouchableOpacity>
+                    </View>
                   </View>
-                </View>
-              );
-            })}
+                );
+              })
+            ) : (
+              <Text style={styles.welcomeText}>You have no recipes :(</Text>
+            )}
           </View>
         </ScrollView>
       </View>
