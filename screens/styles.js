@@ -371,6 +371,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     alignSelf: 'flex-start',
     width: 225,
+    paddingBottom: 10,
   },
   settingsTag: {
     alignSelf: 'center',
