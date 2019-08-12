@@ -22,6 +22,7 @@ class RecipeSearch extends React.Component {
       recipes: [],
       recipeBox: [],
       intolerances: [],
+      diet: [],
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.searchAgain = this.searchAgain.bind(this);
@@ -36,6 +37,7 @@ class RecipeSearch extends React.Component {
         let userFridge = [];
         let userRecipeBox = [];
         let userIntolerances = [];
+        let userDiet = [];
         if (user) {
           await db
             .collection('users')
@@ -47,6 +49,7 @@ class RecipeSearch extends React.Component {
                 userFridge = doc.data().fridge;
                 userRecipeBox = doc.data().recipeBox;
                 userIntolerances = doc.data().intolerances;
+                userDiet = doc.data().diet;
               } else {
                 console.log('document does not exist');
               }
@@ -56,6 +59,7 @@ class RecipeSearch extends React.Component {
           fridge: userFridge,
           recipeBox: userRecipeBox,
           intolerances: userIntolerances,
+          diet: userDiet,
         });
       }
     );
@@ -103,6 +107,7 @@ class RecipeSearch extends React.Component {
   async handleSubmit() {
     const submission = this.state.selections.join(',');
     const userIntolerances = this.state.intolerances.join(',');
+    const userDiet = this.state.diet.join(',');
     try {
       const { data } = await axios.get(
         'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/searchComplex',
@@ -120,6 +125,7 @@ class RecipeSearch extends React.Component {
             offset: 0,
             number: 25,
             intolerances: userIntolerances,
+            diet: userDiet,
           },
         }
       );

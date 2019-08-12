@@ -17,14 +17,17 @@ class CustomSettings extends React.Component {
     this.state = {
       email: '',
       intolerances: [],
+      diet: [],
     };
     this.handleLogout = this.handleLogout.bind(this);
     this.clickHandler = this.clickHandler.bind(this);
+    this.clickHandlerDiet = this.clickHandlerDiet.bind(this);
   }
 
   async componentDidMount() {
     var user = firebase.auth().currentUser;
     let userIntolerances = [];
+    let userDiet = [];
     if (user) {
       await db
         .collection('users')
@@ -34,17 +37,28 @@ class CustomSettings extends React.Component {
           if (doc.exists) {
             console.log('doc data obtained');
             userIntolerances = doc.data().intolerances;
+            userDiet = doc.data().diet;
           } else {
             console.log('doc does not exist');
           }
         });
     }
-    this.setState({ email: user.email, intolerances: userIntolerances });
+    this.setState({
+      email: user.email,
+      intolerances: userIntolerances,
+      diet: userDiet,
+    });
   }
 
   clickHandler(selection) {
     this.setState({
       intolerances: selection,
+    });
+  }
+
+  clickHandlerDiet(selection) {
+    this.setState({
+      diet: selection,
     });
   }
 
@@ -54,7 +68,10 @@ class CustomSettings extends React.Component {
       await db
         .collection('users')
         .doc(user.uid)
-        .set({ intolerances: this.state.intolerances }, { merge: true });
+        .set(
+          { intolerances: this.state.intolerances, diet: this.state.diet },
+          { merge: true }
+        );
     }
   }
 
@@ -80,8 +97,12 @@ class CustomSettings extends React.Component {
       'tree nut',
       'sulfite',
     ];
+    const dietList = ['vegetarian', 'vegan', 'pescetarian'];
     const intolerancesObj = intolerancesList.map(intolerance => {
       return { id: intolerance, name: intolerance };
+    });
+    const dietObj = dietList.map(diet => {
+      return { id: diet, name: diet };
     });
     return (
       <View style={styles.container}>
@@ -96,6 +117,15 @@ class CustomSettings extends React.Component {
                 tags={intolerancesObj}
                 customSelect={this.state.intolerances}
                 onChange={selected => this.clickHandler(selected)}
+                containerStyle={styles.settingsTagContainer}
+                tagStyle={styles.settingsTag}
+                selectedTagStyle={styles.settingsTagSelected}
+              />
+              <Text style={styles.settingsTitle}>Diet:</Text>
+              <TagSelector
+                tags={dietObj}
+                customSelect={this.state.diet}
+                onChange={selected => this.clickHandlerDiet(selected)}
                 containerStyle={styles.settingsTagContainer}
                 tagStyle={styles.settingsTag}
                 selectedTagStyle={styles.settingsTagSelected}
