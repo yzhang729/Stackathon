@@ -11,6 +11,7 @@ import {
 import * as Permissions from 'expo-permissions';
 import { Camera } from 'expo-camera';
 import CaptureButton from './CaptureButton';
+import { CLARIFAI } from '../secrets';
 
 export default class CameraExample extends React.Component {
   state = {
@@ -69,14 +70,13 @@ export default class CameraExample extends React.Component {
     const Clarifai = require('clarifai');
 
     const app = new Clarifai.App({
-      apiKey: '8150ada301ea4604b8d0532ea03b82d6',
+      apiKey: CLARIFAI,
     });
 
     // Identify the image
     app.models
       .predict(Clarifai.GENERAL_MODEL, { base64: imageData })
       .then(response => {
-        //this.displayAnswer(response.outputs[0].data.concepts[0].name)
         let answers = response.outputs[0].data.concepts.map(
           output => output.name
         );

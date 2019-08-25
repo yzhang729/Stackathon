@@ -1,13 +1,7 @@
 import React from 'react';
 import firebase from 'firebase';
 import { app, db } from '../config/firebase';
-import {
-  View,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  CheckBox,
-} from 'react-native';
+import { View, ScrollView, Text, TouchableOpacity } from 'react-native';
 import styles from './styles';
 import TagSelector from 'react-native-tag-selector';
 
@@ -25,7 +19,7 @@ class CustomSettings extends React.Component {
   }
 
   async componentDidMount() {
-    var user = firebase.auth().currentUser;
+    let user = firebase.auth().currentUser;
     let userIntolerances = [];
     let userDiet = [];
     if (user) {
@@ -47,7 +41,7 @@ class CustomSettings extends React.Component {
       email: user.email,
       intolerances: userIntolerances,
       diet: userDiet,
-    });
+    }).catch(err => console.log('a firebase error has occurred', err));
   }
 
   clickHandler(selection) {
@@ -63,7 +57,7 @@ class CustomSettings extends React.Component {
   }
 
   async handleSubmit() {
-    var user = firebase.auth().currentUser;
+    let user = firebase.auth().currentUser;
     if (user) {
       await db
         .collection('users')
@@ -71,7 +65,8 @@ class CustomSettings extends React.Component {
         .set(
           { intolerances: this.state.intolerances, diet: this.state.diet },
           { merge: true }
-        );
+        )
+        .catch(err => console.log('a firebase error has occurred', err));
     }
   }
 
@@ -81,8 +76,8 @@ class CustomSettings extends React.Component {
       .signOut()
       .then(() => console.log('signed out'))
       .then(() => this.props.navigation.navigate('Main'))
-      .catch(function(error) {
-        console.log(error);
+      .catch(error => {
+        console.log('an error has occurred logging out', error);
       });
   }
 

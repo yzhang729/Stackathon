@@ -16,7 +16,7 @@ class Login extends React.Component {
   }
 
   componentDidMount() {
-    var user = firebase.auth().currentUser;
+    let user = firebase.auth().currentUser;
     if (user) {
       this.props.navigation.navigate('Fridge');
     }
@@ -28,10 +28,8 @@ class Login extends React.Component {
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(() => this.props.navigation.navigate('Fridge'))
       .catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // ...
+        let errorCode = error.code;
+        let errorMessage = error.message;
         console.log(errorCode, errorMessage);
         alert(errorMessage);
       });

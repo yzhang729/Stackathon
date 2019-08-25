@@ -11,6 +11,7 @@ import axios from 'axios';
 import { app, db, config } from '../config/firebase';
 
 import { slugify } from './utils';
+import { SPOONACULAR } from '../secrets';
 
 class RecipeSearch extends React.Component {
   constructor() {
@@ -33,7 +34,7 @@ class RecipeSearch extends React.Component {
     this._onFocusListener = this.props.navigation.addListener(
       'didFocus',
       async payload => {
-        var user = firebase.auth().currentUser;
+        let user = firebase.auth().currentUser;
         let userFridge = [];
         let userRecipeBox = [];
         let userIntolerances = [];
@@ -80,7 +81,7 @@ class RecipeSearch extends React.Component {
   }
 
   async addRecipe(recipe) {
-    var user = firebase.auth().currentUser;
+    let user = firebase.auth().currentUser;
     let recipeBox = [];
     if (user) {
       await db
@@ -93,11 +94,13 @@ class RecipeSearch extends React.Component {
           } else {
             console.log('document does not exist');
           }
-        });
+        })
+        .catch(err => console.log('a firebase error has occurred', err));
       await db
         .collection('users')
         .doc(user.uid)
-        .set({ recipeBox: recipeBox }, { merge: true });
+        .set({ recipeBox: recipeBox }, { merge: true })
+        .catch(err => console.log('a firebase error has occurred', err));
     }
     this.setState({
       recipeBox: [...this.state.recipeBox, recipe],
@@ -113,8 +116,7 @@ class RecipeSearch extends React.Component {
         'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/searchComplex',
         {
           headers: {
-            'x-rapidapi-key':
-              '99e97576e6mshfbca1fff3670aaep13399cjsn6c46320424c4',
+            'x-rapidapi-key': SPOONACULAR,
             'x-rapidapi-host':
               'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
           },
@@ -145,7 +147,7 @@ class RecipeSearch extends React.Component {
       );
       this.setState({ searched: true });
     } catch (err) {
-      console.log('an error has occurred', err);
+      console.log('an error has occurred in fetching recipe data', err);
     }
   }
 

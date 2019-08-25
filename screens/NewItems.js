@@ -18,7 +18,7 @@ class NewItems extends React.Component {
   }
 
   async componentDidMount() {
-    var user = firebase.auth().currentUser;
+    let user = firebase.auth().currentUser;
     let userFridge = [];
     if (user) {
       await db
@@ -32,7 +32,8 @@ class NewItems extends React.Component {
           } else {
             console.log('document does not exist');
           }
-        });
+        })
+        .catch(err => console.log('a firebase error has occurred', err));
     }
     this.setState({ currentFridge: userFridge });
   }
@@ -45,7 +46,7 @@ class NewItems extends React.Component {
 
   async handleSubmit() {
     let newFridge = [...this.state.currentFridge, ...this.state.selections];
-    var user = firebase.auth().currentUser;
+    let user = firebase.auth().currentUser;
     if (user) {
       await db
         .collection('users')
@@ -55,7 +56,8 @@ class NewItems extends React.Component {
             fridge: newFridge,
           },
           { merge: true }
-        );
+        )
+        .catch(err => console.log('a firebase error has occurred', err));
     }
     this.props.navigation.navigate('Fridge');
   }

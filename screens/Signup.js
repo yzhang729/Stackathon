@@ -17,7 +17,7 @@ class Signup extends React.Component {
   }
 
   componentDidMount() {
-    var user = firebase.auth().currentUser;
+    let user = firebase.auth().currentUser;
     if (user) {
       this.props.navigation.navigate('Fridge');
     }
@@ -41,9 +41,9 @@ class Signup extends React.Component {
           })
       )
       .then(() => this.props.navigation.navigate('Fridge'))
-      .catch(function(error) {
-        var errorCode = error.code;
-        var errorMessage = error.message;
+      .catch(error => {
+        let errorCode = error.code;
+        let errorMessage = error.message;
         console.log(errorCode, errorMessage);
         alert(error.message);
       });

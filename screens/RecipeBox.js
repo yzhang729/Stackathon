@@ -1,7 +1,6 @@
 import React from 'react';
 import firebase from 'firebase';
 import { Text, View, ScrollView, TouchableOpacity, Image } from 'react-native';
-import TagSelector from 'react-native-tag-selector';
 
 import * as WebBrowser from 'expo-web-browser';
 
@@ -22,7 +21,7 @@ class RecipeBox extends React.Component {
     this._onFocusListener = this.props.navigation.addListener(
       'didFocus',
       async payload => {
-        var user = firebase.auth().currentUser;
+        let user = firebase.auth().currentUser;
         let userRecipeBox = [];
         if (user) {
           await db
@@ -36,7 +35,8 @@ class RecipeBox extends React.Component {
               } else {
                 console.log('document does not exist');
               }
-            });
+            })
+            .catch(err => console.log('a firebase error has occurred', err));
         }
         this.setState({ recipeBox: userRecipeBox });
       }
@@ -44,7 +44,7 @@ class RecipeBox extends React.Component {
   }
 
   async deleteRecipe(recipe) {
-    var user = firebase.auth().currentUser;
+    let user = firebase.auth().currentUser;
     let newRecipeBox = this.state.recipeBox.filter(
       recipes => recipes.recipeUrl !== recipe.recipeUrl
     );
@@ -52,7 +52,8 @@ class RecipeBox extends React.Component {
       await db
         .collection('users')
         .doc(user.uid)
-        .set({ recipeBox: newRecipeBox }, { merge: true });
+        .set({ recipeBox: newRecipeBox }, { merge: true })
+        .catch(err => console.log('a firebase error has occurred', err));
       this.setState({ recipeBox: newRecipeBox });
     }
   }

@@ -21,7 +21,7 @@ class Fridge extends React.Component {
   }
 
   async componentDidMount() {
-    var user = firebase.auth().currentUser;
+    let user = firebase.auth().currentUser;
     let userFridge = [];
     let userName = '';
     if (user) {
@@ -37,7 +37,8 @@ class Fridge extends React.Component {
           } else {
             console.log('document does not exist');
           }
-        });
+        })
+        .catch(err => console.log('a firebase error has occurred', err));
     }
     this.setState({ fridge: userFridge, name: userName });
   }
@@ -54,7 +55,7 @@ class Fridge extends React.Component {
       newItem: '',
     });
     let newFridge = [...this.state.fridge, this.state.newItem];
-    var user = firebase.auth().currentUser;
+    let user = firebase.auth().currentUser;
     if (user) {
       await db
         .collection('users')
@@ -64,7 +65,8 @@ class Fridge extends React.Component {
             fridge: newFridge,
           },
           { merge: true }
-        );
+        )
+        .catch(err => console.log('a firebase error has occurred', err));
     }
   }
 
@@ -73,7 +75,7 @@ class Fridge extends React.Component {
     this.setState({
       fridge: newFridge,
     });
-    var user = firebase.auth().currentUser;
+    let user = firebase.auth().currentUser;
     if (user) {
       await db
         .collection('users')
@@ -83,12 +85,13 @@ class Fridge extends React.Component {
             fridge: newFridge,
           },
           { merge: true }
-        );
+        )
+        .catch(err => console.log('a firebase error has occurred', err));
     }
   }
 
   render() {
-    var user = firebase.auth().currentUser;
+    let user = firebase.auth().currentUser;
     let renderPage;
     if (!user) {
       renderPage = (
