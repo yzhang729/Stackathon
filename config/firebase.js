@@ -3,7 +3,7 @@ require('firebase/firestore');
 const { GFB_KEY } = require('../secrets');
 
 const config = {
-  apiKey: 'GFB_KEY',
+  apiKey: GFB_KEY,
   authDomain: 'stackathon-81b83.firebaseapp.com',
   databaseURL: 'https://stackathon-81b83.firebaseio.com',
   projectId: 'stackathon-81b83',
