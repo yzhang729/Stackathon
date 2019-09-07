@@ -27,7 +27,7 @@ This will compile the JavaScript file and allow you to run the application from 
 
 ### Screenshots and Video
 
-![Main screen](https://i.imgur.com/yFEcThM.jpg | height - 100px 'Main screen')
+<img src="https://i.imgur.com/yFEcThM.jpg" height="200px" >
 
 ## Tech Stack
 
