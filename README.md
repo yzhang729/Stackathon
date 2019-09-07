@@ -27,10 +27,10 @@ This will compile the JavaScript file and allow you to run the application from 
 
 ### Screenshots and Video
 
-<img src="https://i.imgur.com/yFEcThM.jpg" height="500px" display='inline-block'/>
-<img src="https://i.imgur.com/T0by7nc.jpg" height="500px" display='inline-block'/>
-<img src="https://i.imgur.com/rdRwXGt.jpg" height="500px" display='inline-block'/>
-<img src="https://i.imgur.com/Bdspvzp.jpg" height="500px" display='inline-block'/>
+<img src="https://i.imgur.com/yFEcThM.jpg" height="500px" style='display: inline-block'/>
+<img src="https://i.imgur.com/T0by7nc.jpg" height="500px" style='display: inline-block'/>
+<img src="https://i.imgur.com/rdRwXGt.jpg" height="500px" style='display: inline-block'/>
+<img src="https://i.imgur.com/Bdspvzp.jpg" height="500px" style='display: inline-block'/>
 
 [Video here](https://i.imgur.com/h6ElnHj.mp4)
 
